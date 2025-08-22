@@ -21,6 +21,17 @@ export function makeLorem(size = 100) {
 }
 
 
+export function makeName(size = 15) {
+    var words = ['toy', 'talk', 'machine', 'Dol', 'mini television', 'hand', 'car', 'truck', 'All', 'big head', 'the story', 'and ', 'ball', 'robot']
+    var txt = ''
+    while (size > 0) {
+        size--
+        txt += words[Math.floor(Math.random() * words.length)] + ' '
+    }
+    return txt
+}
+
+
 
 
 

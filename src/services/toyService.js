@@ -1,6 +1,9 @@
 import { storageService } from "./async-storage.service";
+import { loadFromStorage, makeId, saveToStorage } from "./util.service";
+
 
 const TOY_KEY = 'toyDB'
+_createToys()
 
 export const toyService = {
     query,
@@ -9,10 +12,6 @@ export const toyService = {
     save,
     getDefaultFilter
 }
-
-
-
-
 
 function query(filterBy = {}) {
     return storageService.query(TOY_KEY)
@@ -46,10 +45,36 @@ function save(toy) {
     }
 }
 
-
-
-
-
 function getDefaultFilter() {
     return { txt: '', minPrice: '' }
+}
+
+function getEmptyToy(name = '', price = '', createdAt = '', inStock = true) {
+    return { name, price, createdAt, inStock }
+}
+
+
+
+
+
+// Private functions
+function _createToys() {
+    let toys = loadFromStorage(TOY_KEY)
+    if (!toys || !toys.length) {
+        toys = [
+            _createToy('Machine', 200, Date.now()),
+            _createToy('Talking Toy', 250, Date.now()),
+            _createToy('Robot Arm', 300, Date.now()),
+            _createToy('Football', 50, Date.now()),
+            _createToy('Chess', 150, Date.now())
+        ]
+    }
+    saveToStorage(TOY_KEY, toys)
+}
+
+
+function _createToy(name, price, createdAt, inStock) {
+    const toy = getEmptyToy(name, price, createdAt, inStock)
+    toy.id = makeId()
+    return toy
 }
