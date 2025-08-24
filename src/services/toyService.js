@@ -7,10 +7,11 @@ _createToys()
 
 export const toyService = {
     query,
-    get,
+    getById,
     remove,
     save,
-    getDefaultFilter
+    getDefaultFilter,
+    getEmptyToy
 }
 
 function query(filterBy = {}) {
@@ -29,7 +30,7 @@ function query(filterBy = {}) {
         })
 }
 
-function get(toyId) {
+function getById(toyId) {
     return storageService.get(TOY_KEY, toyId).then()
 }
 

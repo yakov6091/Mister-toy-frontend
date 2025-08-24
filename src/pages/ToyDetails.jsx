@@ -9,6 +9,7 @@ export function ToyDetails() {
     useEffect(() => {
         loadtoy()
     }, [])
+
     function loadtoy() {
         toyService.getById(toyId)
             .then(toy => setToy(toy))
@@ -16,6 +17,7 @@ export function ToyDetails() {
                 console.log('Coudn\'t load toy:', err)
             })
     }
+
     if (!toy) return <div>Loading...</div>
 
     return (
