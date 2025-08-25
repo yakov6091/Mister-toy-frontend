@@ -10,10 +10,10 @@ import {
     loadToys,
     removeToy,
     setFilter,
-    setSort,
+    // setSort,
 } from '../store/actions/toy.actions'
-import { toyService } from '../services/toy.service'
-import { ToySort } from '../cmps/ToySort'
+// import { toyService } from '../services/toyService.js'
+// import { ToySort } from '../cmps/ToySort'
 
 export function ToyIndex() {
 
@@ -27,16 +27,16 @@ export function ToyIndex() {
         loadToys()
             .catch(err => {
                 console.log('err:', err)
-                showErrorMsg('Cannot load toys')
+                // showErrorMsg('Cannot load toys')
             })
     }, [filterBy, sortBy])
 
     function onRemoveToy(toyId) {
         removeToy(toyId)
-            .then(() => showSuccessMsg('Toy removed'))
+            .then(() => console.log('removed'))
             .catch(err => {
                 console.log('Cannot remove toy', err)
-                showErrorMsg('Cannot remove toy')
+                // showErrorMsg('Cannot remove toy')
             })
     }
 

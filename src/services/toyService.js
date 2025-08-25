@@ -11,7 +11,8 @@ export const toyService = {
     remove,
     save,
     getDefaultFilter,
-    getEmptyToy
+    getEmptyToy,
+    getInStockValue
 }
 
 function query(filterBy = {}) {
@@ -52,6 +53,15 @@ function getDefaultFilter() {
 
 function getEmptyToy(name = '', price = '', createdAt = '', inStock = true) {
     return { name, price, createdAt, inStock }
+}
+
+
+
+
+function getInStockValue(inStock) {
+    if (inStock === '') return ''
+    if (inStock === 'true') return true
+    if (inStock === 'false') return false
 }
 
 

@@ -1,13 +1,11 @@
-import { toyService } from '../../services/toy.service'
+import { toyService } from '../../services/toyService';
 import {
     ADD_TOY,
     REMOVE_TOY,
     SET_FILTER_BY,
     SET_IS_LOADING,
-    SET_SORT_BY,
     SET_TOY_LABELS,
     SET_TOYS,
-
     UPDATE_TOY,
 } from '../reducers/toy.reducer'
 import { store } from '../store'
