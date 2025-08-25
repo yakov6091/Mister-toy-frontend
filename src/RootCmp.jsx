@@ -32,6 +32,7 @@ export function App() {
                             <Route element={<ToyDetails />} path="/toy/:toyid"></Route>
                         </Routes>
                     </main>
+                    <AppFooter />
                 </section>
 
             </Router>
