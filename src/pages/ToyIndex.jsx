@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 import { ToyFilter } from '../cmps/ToyFilter'
 import { ToyList } from '../cmps/ToyList'
-import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
+// import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import {
     loadToyLabels,
     loadToys,

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
-import { debounce } from '../services/util.service.js'
-import { toyService } from '../services/toy.service.js'
+import { debounce } from '../services/util.service'
+import { toyService } from '../services/toyService'
 
 export function ToyFilter({ filterBy, onSetFilter, toyLabels }) {
 
