@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react"
 import { Link } from 'react-router-dom'
+import { ToyFilter } from "../cmps/ToyFilter"
+import { ToyList } from '../cmps/ToyList'
 
+import { toyService } from '../services/toy.service'
 
 export function ToyIndex() {
 
