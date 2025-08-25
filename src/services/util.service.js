@@ -32,9 +32,6 @@ export function makeName(size = 15) {
 }
 
 
-
-
-
 export function saveToStorage(key, value) {
     localStorage.setItem(key, JSON.stringify(value))
 }
