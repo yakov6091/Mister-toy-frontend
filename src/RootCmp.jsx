@@ -1,7 +1,6 @@
+import './assets/style/main.css'
 import { Provider } from 'react-redux'
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
-import './assets/style/main.css'
-
 import { AppFooter } from './cmps/AppFooter'
 import { AppHeader } from './cmps/AppHeader'
 import { HomePage } from './pages/HomePage'

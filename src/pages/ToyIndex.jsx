@@ -21,6 +21,7 @@ export function ToyIndex() {
     const filterBy = useSelector(storeState => storeState.toyModule.filterBy)
     const sortBy = useSelector(storeState => storeState.toyModule.sortBy)
     const toyLabels = useSelector(storeState => storeState.toyModule.toyLabels)
+    console.log({ toys });
 
 
     useEffect(() => {

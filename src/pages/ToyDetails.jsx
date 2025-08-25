@@ -8,10 +8,11 @@ export function ToyDetails() {
 
     useEffect(() => {
         loadtoy()
+
     }, [])
 
     function loadtoy() {
-        toyService.getById(toyId)
+        toyService.getById(toy._id)
             .then(toy => setToy(toy))
             .catch(err => {
                 console.log('Coudn\'t load toy:', err)

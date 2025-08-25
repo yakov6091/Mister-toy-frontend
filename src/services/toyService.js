@@ -86,6 +86,6 @@ function _createToys() {
 
 function _createToy(name, price, createdAt, inStock) {
     const toy = getEmptyToy(name, price, createdAt, inStock)
-    toy.id = makeId()
+    toy._id = makeId()
     return toy
 }
