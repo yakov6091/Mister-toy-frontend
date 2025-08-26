@@ -6,6 +6,7 @@ import { toyService } from '../services/toyService'
 
 export function ToyEdit() {
     const [toyToEdit, setToyToEdit] = useState(toyService.getEmptyToy())
+
     const navigate = useNavigate()
     const { toyID } = useParams()
 
@@ -18,7 +19,7 @@ export function ToyEdit() {
             .then(toy => setToyToEdit(toy))
             .catch(err => {
                 console.log('Had issues in toy edit', err)
-                // navigate('/toy')
+                navigate('/toy')
             })
     }
 
@@ -35,7 +36,6 @@ export function ToyEdit() {
             case 'checkbox':
                 value = target.checked
                 break
-
 
             default:
                 break
@@ -62,6 +62,7 @@ export function ToyEdit() {
                 <label htmlFor="name">Name:</label>
                 <input type="text"
                     id="name"
+                    name="name"
                     placeholder="Enter new toy name..."
                     value={toyToEdit.name}
                     onChange={handleChange}
@@ -70,6 +71,7 @@ export function ToyEdit() {
                 <label htmlFor="price">Price:</label>
                 <input type="number"
                     id="price"
+                    name="price"
                     placeholder="Enter price"
                     value={toyToEdit.price}
                     onChange={handleChange}

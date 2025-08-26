@@ -32,7 +32,7 @@ function query(filterBy = {}) {
 }
 
 function getById(toyId) {
-    return storageService.get(TOY_KEY, toyId).then()
+    return storageService.get(TOY_KEY, toyId)
 }
 
 function remove(toyId) {
@@ -40,7 +40,7 @@ function remove(toyId) {
 }
 
 function save(toy) {
-    if (toy.id) {
+    if (toy._id) {
         return storageService.put(TOY_KEY, toy)
     } else {
         return storageService.post(TOY_KEY, toy)
@@ -55,16 +55,11 @@ function getEmptyToy(name = '', price = '', createdAt = '', inStock = true) {
     return { name, price, createdAt, inStock }
 }
 
-
-
-
 function getInStockValue(inStock) {
     if (inStock === '') return ''
     if (inStock === 'true') return true
     if (inStock === 'false') return false
 }
-
-
 
 
 

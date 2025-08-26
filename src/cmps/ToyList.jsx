@@ -13,7 +13,7 @@ export function ToyList({ onRemoveToy, toys }) {
 
                         <div>
                             <button>
-                                <Link to={`/toy/edit${toy._id}`}>Edit</Link>
+                                <Link to={`/toy/edit/${toy._id}`}>Edit</Link>
                             </button>
 
                             <button onClick={() => onRemoveToy(toy._id)}>Remove</button>

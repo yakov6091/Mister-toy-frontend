@@ -28,7 +28,7 @@ export function App() {
                             <Route element={<About />} path="/about"></Route>
                             <Route element={<ToyIndex />} path="/toy"></Route>
                             <Route element={<ToyEdit />} path="/toy/edit/:toyId?"></Route>
-                            <Route element={<ToyDetails />} path="/toy/:toyid"></Route>
+                            <Route element={<ToyDetails />} path="/toy/:toyId"></Route>
                         </Routes>
                     </main>
                     <AppFooter />
