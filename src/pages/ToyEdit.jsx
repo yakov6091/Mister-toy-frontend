@@ -2,20 +2,30 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { toyService } from '../services/toyService'
 
+import { loadToyLabels, saveToy } from '../store/actions/toy.actions'
 
 
 export function ToyEdit() {
-    const [toyToEdit, setToyToEdit] = useState(toyService.getEmptyToy())
+    const [toyToEdit, setToyToEdit] = useState(null)
 
     const navigate = useNavigate()
-    const { toyID } = useParams()
+    const { toyId } = useParams()
 
     useEffect(() => {
-        if (toyID) loadToy()
-    }, [])
+        // When there's no toyID, we are in "add" mode.
+        // So, we reset the state to a new empty toy.
+        if (!toyId) {
+            setToyToEdit(toyService.getEmptyToy())
+            return
+        }
+        // When there is a toyID, we are in "edit" mode.
+        // So, we load the existing toy from the service.
+        loadToy()
+
+    }, [toyId]) //dependency array
 
     function loadToy() {
-        toyService.getById(toyID)
+        toyService.getById(toyId)
             .then(toy => setToyToEdit(toy))
             .catch(err => {
                 console.log('Had issues in toy edit', err)
@@ -24,36 +34,37 @@ export function ToyEdit() {
     }
 
     function handleChange({ target }) {
-        const field = target.name
-        let value = target.value
-
-        switch (target.type) {
-            case 'number':
-            case 'range':
-                value = +value || ''
-                break
-
-            case 'checkbox':
-                value = target.checked
-                break
-
-            default:
-                break
+        const { name, value, type, checked } = target
+        let fieldValue = value
+        if (type === 'checkbox') {
+            fieldValue = checked
+        } else if (type === 'number') {
+            fieldValue = +value
+        } else if (type === 'select-multiple') {
+            fieldValue = [...target.selectedOptions].map(option => option.value)
         }
-        setToyToEdit(prevToyEdit => ({ ...prevToyEdit, [field]: value }))
+
+
+        setToyToEdit(prevToy => ({
+            ...prevToy,
+            [name]: fieldValue
+        }))
     }
 
     function onSaveToy(ev) {
         ev.preventDefault()
-        toyService.save(toyToEdit)
-            .then(() => {
+        saveToy(toyToEdit)
+            .then((savedToy) => {
+                // showSuccessMsg(`Toy ${savedToy._id} saved successfully`)
                 navigate('/toy')
             })
-            .catch((err) => {
-                console.log('Error saving toy:', err)
+            .catch(err => {
+                console.log('err:', err)
+                // showErrorMsg('Cannot save toy')
             })
     }
 
+    if (!toyToEdit) return <div>Loading...</div>
     return (
         <section className="toy-edit">
             <h2>{toyToEdit._id ? 'Edit' : 'Add'}</h2>
@@ -84,9 +95,4 @@ export function ToyEdit() {
             </form>
         </section>
     )
-
-
-
-
-
 }

@@ -72,7 +72,8 @@ function _createToys() {
             _createToy('Talking Toy', 250, Date.now()),
             _createToy('Robot Arm', 300, Date.now()),
             _createToy('Football', 50, Date.now()),
-            _createToy('Chess', 150, Date.now())
+            _createToy('Chess', 150, Date.now()),
+            _createToy('Cube', 40, Date.now(), false)
         ]
     }
     saveToStorage(TOY_KEY, toys)
