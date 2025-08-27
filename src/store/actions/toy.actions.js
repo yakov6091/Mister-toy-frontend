@@ -77,6 +77,6 @@ export function setFilter(filterBy = toyService.getDefaultFilter()) {
     store.dispatch({ type: SET_FILTER_BY, filterBy: filterBy })
 }
 
-// export function setSort(sortBy = toyService.getDefaultSort()) {
-//     store.dispatch({ type: SET_SORT_BY, sortBy: sortBy })
-// }
+export function setSort(sortBy = toyService.getDefaultSort()) {
+    store.dispatch({ type: SET_SORT_BY, sortBy: sortBy })
+}
