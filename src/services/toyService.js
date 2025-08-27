@@ -97,8 +97,8 @@ function getDefaultSort() {
 
 function getEmptyToy() {
     return {
-        name,
-        price,
+        name: '',
+        price: 0,
         labels: _getRandomLabels(),
         createdAt: Date.now(),
         inStock: true

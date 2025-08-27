@@ -3,10 +3,12 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { toyService } from '../services/toyService'
 
 import { loadToyLabels, saveToy } from '../store/actions/toy.actions'
+import { useSelector } from 'react-redux'
 
 
 export function ToyEdit() {
     const [toyToEdit, setToyToEdit] = useState(null)
+    const labels = useSelector(storeState => storeState.toyModule.toyLabels)
 
     const navigate = useNavigate()
     const { toyId } = useParams()
@@ -21,6 +23,7 @@ export function ToyEdit() {
         // When there is a toyID, we are in "edit" mode.
         // So, we load the existing toy from the service.
         loadToy()
+        loadToyLabels()
 
     }, [toyId]) //dependency array
 
@@ -70,23 +73,59 @@ export function ToyEdit() {
             <h2>{toyToEdit._id ? 'Edit' : 'Add'}</h2>
 
             <form onSubmit={onSaveToy}>
-                <label htmlFor="name">Name:</label>
-                <input type="text"
-                    id="name"
-                    name="name"
-                    placeholder="Enter new toy name..."
-                    value={toyToEdit.name}
-                    onChange={handleChange}
-                />
+                <div className="form-group">
+                    <label htmlFor="name">Name:</label>
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        value={toyToEdit.name}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
 
-                <label htmlFor="price">Price:</label>
-                <input type="number"
-                    id="price"
-                    name="price"
-                    placeholder="Enter price"
-                    value={toyToEdit.price}
-                    onChange={handleChange}
-                />
+                <div className="form-group">
+                    <label htmlFor="price">Price:</label>
+                    <input
+                        type="number"
+                        id="price"
+                        name="price"
+                        value={toyToEdit.price || ''}
+                        onChange={handleChange}
+                    />
+                </div>
+
+                <div className="form-group">
+                    <label htmlFor="labels">Labels:</label>
+                    <select
+                        id="labels"
+                        name="labels"
+                        multiple
+                        value={toyToEdit.labels}
+                        onChange={handleChange}
+                    >
+                        {labels.map(label => (
+                            <option key={label} value={label}>
+                                {label}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+
+                {toyToEdit._id && (
+                    <div className="form-group">
+                        <label>
+                            <input
+                                type="checkbox"
+                                name="inStock"
+                                checked={toyToEdit.inStock}
+                                onChange={handleChange}
+                            />
+                            In Stock
+                        </label>
+                    </div>
+                )}
 
                 <div>
                     <button>{toyToEdit._id ? 'Save' : 'Add'}</button>

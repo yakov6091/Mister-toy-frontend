@@ -30,6 +30,11 @@ export function ToyIndex() {
                 console.log('err:', err)
                 // showErrorMsg('Cannot load toys')
             })
+        loadToyLabels()
+            .catch(err => {
+                console.log('err:', err)
+                // showErrorMsg('Cannot load labels')
+            })
     }, [filterBy, sortBy])
 
     function onRemoveToy(toyId) {
