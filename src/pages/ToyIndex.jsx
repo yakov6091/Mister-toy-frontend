@@ -10,10 +10,10 @@ import {
     loadToys,
     removeToy,
     setFilter,
-    // setSort,
+    setSort,
 } from '../store/actions/toy.actions'
 // import { toyService } from '../services/toyService.js'
-// import { ToySort } from '../cmps/ToySort'
+import { ToySort } from '../cmps/ToySort'
 
 export function ToyIndex() {
 
@@ -59,7 +59,7 @@ export function ToyIndex() {
                     onSetFilter={onSetFilter}
                     toyLabels={toyLabels}
                 />
-                {/* <ToySort sortBy={sortBy} onSetSort={onSetSort} /> */}
+                <ToySort sortBy={sortBy} onSetSort={onSetSort} />
             </section>
 
             <div style={{ marginBlockStart: '0.5em', textAlign: 'center' }}>

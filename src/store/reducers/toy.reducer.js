@@ -16,7 +16,7 @@ export const SET_ERROR = 'SET_ERROR'
 const initialState = {
     toys: [],
     filterBy: toyService.getDefaultFilter(),
-    // sortBy: toyService.getDefaultSort(),
+    sortBy: toyService.getDefaultSort(),
     toyLabels: [],
     lastToys: [],
     flag: {
@@ -67,4 +67,3 @@ export function toyReducer(state = initialState, action = {}) {
             return state
     }
 }
-

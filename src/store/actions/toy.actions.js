@@ -7,6 +7,7 @@ import {
     SET_TOY_LABELS,
     SET_TOYS,
     UPDATE_TOY,
+    SET_SORT_BY
 } from '../reducers/toy.reducer'
 import { store } from '../store'
 

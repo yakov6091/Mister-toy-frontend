@@ -31,7 +31,7 @@ export const toyService = {
     getToyLabelCounts
 }
 
-function query(filterBy = {}) {
+function query(filterBy = {}, sortBy = {}) {
     return storageService.query(TOY_KEY)
         .then(toys => {
             if (filterBy.txt) {
@@ -53,7 +53,7 @@ function query(filterBy = {}) {
             //* Sort
             if (sortBy.type) {
                 const dir = +sortBy.desc
-                toysToShow.sort((a, b) => {
+                toys.sort((a, b) => {
                     if (sortBy.type === 'name') {
                         return a.name.localeCompare(b.name) * dir
                     } else if (sortBy.type === 'price' || sortBy.type === 'createdAt') {
@@ -111,7 +111,7 @@ function getToyLabels() {
 }
 
 function getToyLabelCounts() {
-    return storageService.query(TOY_DB).then(toys => {
+    return storageService.query(TOY_KEY).then(toys => {
         const labelCounts = {}
         toys.forEach(toy => {
             toy.labels.forEach(label => {
