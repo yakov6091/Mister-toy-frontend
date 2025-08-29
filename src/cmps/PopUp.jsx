@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react'
 
 export function PopUp({ header, footer, children, isOpen = false, onClose = () => { } }) {
-    const [isOpenPopUp, setIsChatOpen] = useState(isOpen)
+    const [isOpenPopUp, setIsOpenPopUp] = useState(isOpen)
 
     useEffect(() => {
         setIsOpenPopUp(isOpen)
     }, [isOpen])
 
     function onClosePopUp() {
-        setIsChatOpen(false)
+        setIsOpenPopUp(false)
         onClose()
     }
 

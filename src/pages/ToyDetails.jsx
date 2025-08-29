@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { toyService } from "../services/toyService";
 import { Link, useNavigate, useParams } from "react-router-dom"
 import { Chat } from "../cmps/Chat";
+import { PopUp } from "../cmps/PopUp";
 
 
 export function ToyDetails() {
@@ -47,14 +48,18 @@ export function ToyDetails() {
                 <Link to="/toy">Back</Link>
             </button>
 
-            <Chat />
-
-
-
-
+            <section>
+                <PopUp
+                    header={<h3>Chat About {toy.name}</h3>}
+                    footer={<h4>&copy; 2025-9999 Toys INC</h4>}
+                    onClose={() => setIsChatOpen(false)}
+                    isOpen={isChatOpen}
+                >
+                    <Chat />
+                </PopUp>
+            </section>
+            {!isChatOpen && <button onClick={() => setIsChatOpen(true)} className='open-chat'>Chat</button>}
         </section>
-
-
     )
 
 }
