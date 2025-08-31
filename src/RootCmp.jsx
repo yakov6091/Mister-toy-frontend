@@ -5,6 +5,7 @@ import { AppFooter } from './cmps/AppFooter'
 import { AppHeader } from './cmps/AppHeader'
 import { HomePage } from './pages/HomePage'
 import { About } from './pages/About'
+import { Dashboard } from './pages/Dashboard'
 import { ToyDetails } from './pages/ToyDetails'
 import { ToyEdit } from './pages/ToyEdit'
 import { ToyIndex } from './pages/ToyIndex'
@@ -26,6 +27,7 @@ export function App() {
                         <Routes>
                             <Route element={<HomePage />} path="/"></Route>
                             <Route element={<About />} path="/about"></Route>
+                            <Route element={<Dashboard />} path='/dashboard'></Route>
                             <Route element={<ToyIndex />} path="/toy"></Route>
                             <Route element={<ToyEdit />} path="/toy/edit/:toyId?"></Route>
                             <Route element={<ToyDetails />} path="/toy/:toyId"></Route>

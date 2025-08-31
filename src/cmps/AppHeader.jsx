@@ -10,6 +10,7 @@ export function AppHeader() {
                     <NavLink to="/toy">toys</NavLink> |
                     {/* <NavLink to="/dashboard">dashboard</NavLink> | */}
                     <NavLink to="/about">about</NavLink>
+                    <NavLink to="/dashboard">dashboard</NavLink>
                 </nav>
             </div>
             <div className="logo">Mister Toy</div>
