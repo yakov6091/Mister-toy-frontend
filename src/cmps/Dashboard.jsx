@@ -10,7 +10,7 @@ export function Dashboard({ labelCounts = {} }) {
             labels: Object.keys(labelCounts),
             datasets: [
                 {
-                    label: '# of Votes',
+                    label: 'Labels',
                     data: Object.values(labelCounts).map(labelData => labelData.total),
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
